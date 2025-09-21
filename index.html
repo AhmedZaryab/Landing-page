@@ -54,7 +54,7 @@
     <!-- Sticky Header -->
     <nav id="stickyHeader" class="sticky-header container mx-auto px-4 py-4 md:py-6 flex items-center justify-between">
         <div class="flex items-center space-x-2">
-            <img src="https://storage.googleapis.com/canvas-sandbox-assets/ChatGPT%20Image%20Sep%2020%2C%202025%2C%2004_57_33%20PM.jpg" alt="OIIO Logo" class="h-10 w-10 rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/48x48/0f1f3a/f5f1e8?text=O'">
+            <img src="image.png" alt="OIIO Logo" class="h-10 w-10 rounded-lg">
             <span class="text-2xl font-bold tracking-tight">OIIO</span>
         </div>
         <a href="#waitlist-section" class="inline-block px-6 py-2 bg-[#0f1f3a] text-[#f5f1e8] font-bold rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:bg-[#203657]">
@@ -66,7 +66,7 @@
     <header class="container mx-auto px-4 py-6 md:py-8 flex items-center justify-between">
         <!-- Logo -->
         <div class="flex items-center space-x-2" data-aos="fade-right">
-            <img src="https://storage.googleapis.com/canvas-sandbox-assets/ChatGPT%20Image%20Sep%2020%2C%202025%2C%2004_57_33%20PM.jpg" alt="OIIO Logo" class="h-12 w-12 rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/48x48/0f1f3a/f5f1e8?text=O'">
+            <img src="image.png" alt="OIIO Logo" class="h-12 w-12 rounded-lg">
             <span class="text-3xl font-bold tracking-tight">OIIO</span>
         </div>
     </header>
@@ -125,40 +125,13 @@
             </div>
         </section>
 
-        <!-- Packages Section -->
-        <section class="py-16">
-            <div class="bg-white p-8 md:p-12 rounded-3xl shadow-2xl" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Specialized Packages for Real Needs</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Interview Training Card -->
-                    <div class="bg-[#f5f1e8] p-8 rounded-3xl shadow-lg transform transition-transform duration-300 hover:scale-105" data-aos="fade-up" data-aos-delay="100">
-                        <div class="text-5xl mb-4">💼</div>
-                        <h3 class="text-2xl font-bold mb-2">Interview Training</h3>
-                        <p class="text-gray-600">Sharpen communication for job readiness. Practice answering common questions with AI-powered feedback to make a lasting impression.</p>
-                    </div>
-
-                    <!-- Public Speaking Card -->
-                    <div class="bg-[#f5f1e8] p-8 rounded-3xl shadow-lg transform transition-transform duration-300 hover:scale-105" data-aos="fade-up" data-aos-delay="200">
-                        <div class="text-5xl mb-4">🎤</div>
-                        <h3 class="text-2xl font-bold mb-2">Public Speaking</h3>
-                        <p class="text-gray-600">Build confidence in delivering speeches and presentations. Get real-time feedback on your rhythm, tone, and overall delivery.</p>
-                    </div>
-
-                    <!-- Social & Professional Scenarios Card -->
-                    <div class="bg-[#f5f1e8] p-8 rounded-3xl shadow-lg transform transition-transform duration-300 hover:scale-105" data-aos="fade-up" data-aos-delay="300">
-                        <div class="text-5xl mb-4">💬</div>
-                        <h3 class="text-2xl font-bold mb-2">Social & Professional Scenarios</h3>
-                        <p class="text-gray-600">Learn to adapt your tone and style for any situation, whether speaking with colleagues, clients, or friends.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Waitlist Form Section -->
         <section id="waitlist-section" class="py-16" data-aos="fade-up">
             <div class="bg-white p-8 md:p-12 rounded-3xl shadow-2xl max-w-2xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">Join the Waitlist</h2>
-                <p class="text-center text-lg mb-8 text-gray-600">Be the first to know when the app is launched.</p>
+                <div id="waitlistHeader">
+                    <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">Join the Waitlist</h2>
+                    <p class="text-center text-lg mb-8 text-gray-600">Be the first to know when the app is launched.</p>
+                </div>
                 <form id="waitlistForm" class="space-y-6">
                     <div>
                         <label for="name" class="block text-lg font-medium mb-2">Name</label>
@@ -178,6 +151,11 @@
                     </button>
                     <div id="statusMessage" class="text-center mt-4 hidden"></div>
                 </form>
+                <div id="thankYouMessage" class="text-center py-8 hidden">
+                    <div class="text-6xl mb-4">🎉</div>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-4 text-[#0f1f3a]">You're In! </h3>
+                    <p class="text-lg text-gray-600">Thank you for joining the OIIO waitlist, <span id="userName"></span>. We can't wait to help you unlock clearer, more confident speech. Get ready to be heard!</p>
+                </div>
             </div>
         </section>
 
@@ -211,10 +189,13 @@
             });
 
             const form = document.getElementById('waitlistForm');
+            const waitlistHeader = document.getElementById('waitlistHeader');
             const submitButton = form.querySelector('button[type="submit"]');
             const submitButtonText = document.getElementById('submitButtonText');
             const submitSpinner = document.getElementById('submitSpinner');
             const statusMessage = document.getElementById('statusMessage');
+            const thankYouMessage = document.getElementById('thankYouMessage');
+            const userName = document.getElementById('userName');
 
             form.addEventListener('submit', async (event) => {
                 event.preventDefault();
@@ -231,17 +212,21 @@
                     // Simulate form submission (replace with your preferred backend)
                     await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
                     
-                    statusMessage.textContent = 'Thank you for joining the waitlist!';
-                    statusMessage.classList.remove('hidden', 'text-red-600');
-                    statusMessage.classList.add('text-green-600');
+                    // Set the user's name in the thank you message
+                    userName.textContent = name;
+                    
+                    // Hide the header, form and show thank you message
+                    waitlistHeader.classList.add('hidden');
+                    form.classList.add('hidden');
+                    thankYouMessage.classList.remove('hidden');
 
-                    form.reset();
                 } catch (e) {
                     console.error("Error submitting form: ", e);
                     statusMessage.textContent = 'Something went wrong. Please try again.';
                     statusMessage.classList.remove('hidden', 'text-green-600');
                     statusMessage.classList.add('text-red-600');
-                } finally {
+                    
+                    // Reset button state on error
                     submitButton.disabled = false;
                     submitButtonText.classList.remove('hidden');
                     submitSpinner.classList.add('hidden');
