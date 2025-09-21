@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OIIO - AI Communication Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Library for scroll animations -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #0f1f3a;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .submit-button {
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .submit-button:hover {
+            background-color: #203657;
+            transform: scale(1.02);
+        }
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background-color: #f5f1e8;
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+            transform: translateY(-100%);
+            box-shadow: none;
+        }
+        .sticky-header.show {
+            transform: translateY(0);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-[#f5f1e8] text-[#0f1f3a]">
+
+    <!-- Sticky Header -->
+    <nav id="stickyHeader" class="sticky-header container mx-auto px-4 py-4 md:py-6 flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+            <img src="https://storage.googleapis.com/canvas-sandbox-assets/ChatGPT%20Image%20Sep%2020%2C%202025%2C%2004_57_33%20PM.jpg" alt="OIIO Logo" class="h-10 w-10 rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/48x48/0f1f3a/f5f1e8?text=O'">
+            <span class="text-2xl font-bold tracking-tight">OIIO</span>
+        </div>
+        <a href="#waitlist-section" class="inline-block px-6 py-2 bg-[#0f1f3a] text-[#f5f1e8] font-bold rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:bg-[#203657]">
+            Join the Waitlist
+        </a>
+    </nav>
+
+    <!-- Header -->
+    <header class="container mx-auto px-4 py-6 md:py-8 flex items-center justify-between">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2" data-aos="fade-right">
+            <img src="https://storage.googleapis.com/canvas-sandbox-assets/ChatGPT%20Image%20Sep%2020%2C%202025%2C%2004_57_33%20PM.jpg" alt="OIIO Logo" class="h-12 w-12 rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/48x48/0f1f3a/f5f1e8?text=O'">
+            <span class="text-3xl font-bold tracking-tight">OIIO</span>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4">
+
+        <!-- Hero Section -->
+        <section id="hero-section" class="text-center py-16 md:py-24" data-aos="fade-up">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4 text-[#0f1f3a]">
+                Master Your Voice. Speak with Confidence.
+            </h1>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 mt-4">
+                We are building an AI-powered language and communication platform designed to go beyond vocabulary and grammar. Our mission is to help people become fluent, confident, and articulate speakers in real-world situations.
+            </p>
+            <a href="#waitlist-section" class="inline-block mt-8 px-8 py-4 bg-[#0f1f3a] text-[#f5f1e8] font-bold rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:bg-[#203657]">
+                Join the Waitlist
+            </a>
+        </section>
+
+        <!-- Features Section -->
+        <section class="py-16">
+            <div class="bg-white p-8 md:p-12 rounded-3xl shadow-2xl" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Beyond the Basics</h2>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-10">
+                    <div class="flex-1 max-w-md" data-aos="fade-right">
+                        <p class="text-lg mb-6">
+                            Unlike traditional apps, our platform gives you real-time feedback on clarity and articulation. This helps you build awareness of your speaking habits and develop a more polished, professional style.
+                        </p>
+                        <p class="text-lg">
+                            Our AI highlights and coaches you on:
+                        </p>
+                    </div>
+                    <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="bg-[#f5f1e8] p-6 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                            <div class="text-3xl mb-2">🗣️</div>
+                            <h3 class="font-semibold text-lg mb-1">Filler Words</h3>
+                            <p class="text-gray-600 text-sm">Highlights "umm" or "like" to reduce verbal clutter.</p>
+                        </div>
+                        <div class="bg-[#f5f1e8] p-6 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                            <div class="text-3xl mb-2">🔄</div>
+                            <h3 class="font-semibold text-lg mb-1">Overused Phrases</h3>
+                            <p class="text-gray-600 text-sm">Identifies repetitive language for richer expression.</p>
+                        </div>
+                        <div class="bg-[#f5f1e8] p-6 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                            <div class="text-3xl mb-2">⏱️</div>
+                            <h3 class="font-semibold text-lg mb-1">Pacing & Pauses</h3>
+                            <p class="text-gray-600 text-sm">Gives feedback on speed and unnatural pauses.</p>
+                        </div>
+                        <div class="bg-[#f5f1e8] p-6 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="400">
+                            <div class="text-3xl mb-2">✨</div>
+                            <h3 class="font-semibold text-lg mb-1">Clarity & Impact</h3>
+                            <p class="text-gray-600 text-sm">Provides precise scoring to boost confidence.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Packages Section -->
+        <section class="py-16">
+            <div class="bg-white p-8 md:p-12 rounded-3xl shadow-2xl" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Specialized Packages for Real Needs</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Interview Training Card -->
+                    <div class="bg-[#f5f1e8] p-8 rounded-3xl shadow-lg transform transition-transform duration-300 hover:scale-105" data-aos="fade-up" data-aos-delay="100">
+                        <div class="text-5xl mb-4">💼</div>
+                        <h3 class="text-2xl font-bold mb-2">Interview Training</h3>
+                        <p class="text-gray-600">Sharpen communication for job readiness. Practice answering common questions with AI-powered feedback to make a lasting impression.</p>
+                    </div>
+
+                    <!-- Public Speaking Card -->
+                    <div class="bg-[#f5f1e8] p-8 rounded-3xl shadow-lg transform transition-transform duration-300 hover:scale-105" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-5xl mb-4">🎤</div>
+                        <h3 class="text-2xl font-bold mb-2">Public Speaking</h3>
+                        <p class="text-gray-600">Build confidence in delivering speeches and presentations. Get real-time feedback on your rhythm, tone, and overall delivery.</p>
+                    </div>
+
+                    <!-- Social & Professional Scenarios Card -->
+                    <div class="bg-[#f5f1e8] p-8 rounded-3xl shadow-lg transform transition-transform duration-300 hover:scale-105" data-aos="fade-up" data-aos-delay="300">
+                        <div class="text-5xl mb-4">💬</div>
+                        <h3 class="text-2xl font-bold mb-2">Social & Professional Scenarios</h3>
+                        <p class="text-gray-600">Learn to adapt your tone and style for any situation, whether speaking with colleagues, clients, or friends.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Waitlist Form Section -->
+        <section id="waitlist-section" class="py-16" data-aos="fade-up">
+            <div class="bg-white p-8 md:p-12 rounded-3xl shadow-2xl max-w-2xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">Join the Waitlist</h2>
+                <p class="text-center text-lg mb-8 text-gray-600">Be the first to know when the app is launched.</p>
+                <form id="waitlistForm" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-lg font-medium mb-2">Name</label>
+                        <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-[#0f1f3a]" placeholder="Enter your full name" required>
+                    </div>
+                    <div>
+                        <label for="occupation" class="block text-lg font-medium mb-2">Occupation</label>
+                        <input type="text" id="occupation" name="occupation" class="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-[#0f1f3a]" placeholder="e.g., Student, Marketer, Public Speaker" required>
+                    </div>
+                    <div>
+                        <label for="usage" class="block text-lg font-medium mb-2">What will you be using this for?</label>
+                        <textarea id="usage" name="usage" rows="4" class="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-[#0f1f3a]" placeholder="Tell us how you plan to use OIIO to improve your communication." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button w-full px-6 py-4 rounded-xl font-bold bg-[#0f1f3a] text-[#f5f1e8] shadow-lg flex items-center justify-center">
+                        <span id="submitButtonText">Join the Waitlist</span>
+                        <span id="submitSpinner" class="spinner ml-3 hidden"></span>
+                    </button>
+                    <div id="statusMessage" class="text-center mt-4 hidden"></div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center py-6 border-t border-gray-300 text-gray-600">
+            <p>&copy; 2024 OIIO. All rights reserved.</p>
+        </footer>
+
+    </main>
+    
+    <!-- JavaScript -->
+    <script>
+        // Initialize AOS
+        window.addEventListener('load', () => {
+            AOS.init({
+                duration: 1000,
+                once: true,
+                easing: 'ease-in-out'
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth scroll for all anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            const form = document.getElementById('waitlistForm');
+            const submitButton = form.querySelector('button[type="submit"]');
+            const submitButtonText = document.getElementById('submitButtonText');
+            const submitSpinner = document.getElementById('submitSpinner');
+            const statusMessage = document.getElementById('statusMessage');
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                submitButton.disabled = true;
+                submitButtonText.classList.add('hidden');
+                submitSpinner.classList.remove('hidden');
+
+                const name = document.getElementById('name').value;
+                const occupation = document.getElementById('occupation').value;
+                const usage = document.getElementById('usage').value;
+
+                try {
+                    // Simulate form submission (replace with your preferred backend)
+                    await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
+                    
+                    statusMessage.textContent = 'Thank you for joining the waitlist!';
+                    statusMessage.classList.remove('hidden', 'text-red-600');
+                    statusMessage.classList.add('text-green-600');
+
+                    form.reset();
+                } catch (e) {
+                    console.error("Error submitting form: ", e);
+                    statusMessage.textContent = 'Something went wrong. Please try again.';
+                    statusMessage.classList.remove('hidden', 'text-green-600');
+                    statusMessage.classList.add('text-red-600');
+                } finally {
+                    submitButton.disabled = false;
+                    submitButtonText.classList.remove('hidden');
+                    submitSpinner.classList.add('hidden');
+                }
+            });
+
+            // Logic for sticky header
+            const stickyHeader = document.getElementById('stickyHeader');
+            const heroSection = document.getElementById('hero-section');
+            const heroHeight = heroSection.offsetHeight;
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > heroHeight - 50) {
+                    stickyHeader.classList.add('show');
+                } else {
+                    stickyHeader.classList.remove('show');
+                }
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+</body>
+</html>
