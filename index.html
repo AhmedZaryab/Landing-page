@@ -209,8 +209,24 @@
                 const usage = document.getElementById('usage').value;
 
                 try {
-                    // Simulate form submission (replace with your preferred backend)
-                    await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
+                    // Submit form data to Netlify function
+                    const response = await fetch('/.netlify/functions/waitlist', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            name: name,
+                            occupation: occupation,
+                            usage: usage
+                        })
+                    });
+
+                    const result = await response.json();
+
+                    if (!response.ok) {
+                        throw new Error(result.error || 'Failed to join waitlist');
+                    }
                     
                     // Set the user's name in the thank you message
                     userName.textContent = name;
@@ -222,7 +238,7 @@
 
                 } catch (e) {
                     console.error("Error submitting form: ", e);
-                    statusMessage.textContent = 'Something went wrong. Please try again.';
+                    statusMessage.textContent = e.message || 'Something went wrong. Please try again.';
                     statusMessage.classList.remove('hidden', 'text-green-600');
                     statusMessage.classList.add('text-red-600');
                     

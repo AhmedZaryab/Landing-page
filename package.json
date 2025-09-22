@@ -1,0 +1,20 @@
+{
+  "name": "oio-landing-page",
+  "version": "1.0.0",
+  "description": "OIIO AI Communication Platform Landing Page",
+  "main": "index.html",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "echo 'No build step required for static site'",
+    "deploy": "netlify deploy --prod"
+  },
+  "dependencies": {
+    "postgres": "^3.4.3"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
+  },
+  "keywords": ["landing-page", "waitlist", "ai", "communication"],
+  "author": "OIIO Team",
+  "license": "MIT"
+}
